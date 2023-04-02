@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -38,7 +38,7 @@ namespace Hunting_the_Manticore
             Console.Clear();
 
             Console.WriteLine("Player 2, it is your turn.\n");
-            Console.Clear();
+            //Console.Clear();
             
             while (CityHP > 0 && ManticoreHP > 0)
             {
@@ -76,23 +76,9 @@ namespace Hunting_the_Manticore
             //game outcome
             bool won = CityHP > 0;
             DisplayEnding(won);
-
+            Console.ReadLine();
         }
-
-        static void DisplayEnding (bool won)
-        {
-            if (won)
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("The Manticore has been destroyed! The city has been saved!");
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.WriteLine("The city has been destroyed. The Manticore has killed everyone");
-            }
-        }
-        
+                       
         static void RoundStatus (int round, int cityHP, int ManticoreHP)
         {
             //Display current round, city remaining health, manticore remaining health and prints on screen
@@ -126,7 +112,28 @@ namespace Hunting_the_Manticore
             return number;
         }
 
+        static void DisplayResult(int CannonHit, int ManticoreLocation)
+        {
+            if (CannonHit == ManticoreLocation) { Console.WriteLine("\nIt's a Hit!"); }
+            if (CannonHit > ManticoreLocation) { Console.WriteLine("\nThat round OVERSHOT the target."); }
+            if (CannonHit < ManticoreLocation) { Console.WriteLine("\nThat round FELL SHORT of the target"); }
+        }
 
+        static void DisplayEnding(bool won)
+        {
+            if (won)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("The Manticore has been destroyed! The city has been saved!");
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.WriteLine("The city has been destroyed. The Manticore has killed everyone");
+            }
+        }
+
+        
 
     }
 }
