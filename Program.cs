@@ -35,6 +35,15 @@ namespace Hunting_the_Manticore
             Console.ForegroundColor= ConsoleColor.DarkRed;
             Console.Write("Player 1, how far away from the city do you want to station the Manticore? range: [0-100] \n");
             int ManticoreLocation = Convert.ToInt32(Console.ReadLine());
+            
+              while (ManticoreLocation > 100 || ManticoreLocation < 0)
+            {
+                Console.Clear();
+                Console.WriteLine("Please insert a valid range between [0-100].\n");
+                Console.Write("Player 1, how far away from the city do you want to station the Manticore? range: [0-100] \n");
+                ManticoreLocation = Convert.ToInt32(Console.ReadLine());
+            }
+            
             Console.Clear();
 
             Console.WriteLine("Player 2, it is your turn.\n");
